@@ -24,6 +24,8 @@ class TodayViewController: UIViewController {
     let locationManager = CLLocationManager()
     var weatherManager = TWeatherManager()
     
+    var weatherAsString: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +38,12 @@ class TodayViewController: UIViewController {
     }
 
     @IBAction func didTapShare(_ sender: UIButton) {
+        if let object = weatherAsString, weatherAsString != nil {
+          let objectsToShare = [object]
+          let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+          self.present(activityVC, animated: true, completion: nil)
+        }
     }
-    
-    
 }
 
 extension TodayViewController: TWeatherManagerDelegate{
@@ -49,10 +54,11 @@ extension TodayViewController: TWeatherManagerDelegate{
             self.todayWeatherImage.image = UIImage(systemName: weather.conditionName)
             self.todayWeatherDescriptionLabel.text = weather.capitalizeWeatherDescription
             self.todayHumidityLabel.text = weather.humidityString
-            //self.today1hLabel.text = weather.onehString
+            self.today1hLabel.text = weather._1hString
             self.todayPressureLabel.text = weather.pressureString
             self.todayWindSpeedLabel.text = weather.windSpeedString
             self.todayWindDegLabel.text = weather.windDegString
+            self.weatherAsString = weather.toString()
         }
     }
 }

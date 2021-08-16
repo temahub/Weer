@@ -12,7 +12,7 @@ struct WeatherData: Codable {
     let main: Main
     let weather: [Weather]
     let wind: Wind
-    //let rain: Rain
+    let rain: Rain?
     let sys: Sys
 }
 
@@ -28,7 +28,7 @@ struct Wind: Codable {
 }
 
 struct Rain: Codable {
-    var Oneh: Double
+    var _1h: Double
 }
 
 struct Weather: Codable {

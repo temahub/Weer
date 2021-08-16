@@ -14,7 +14,7 @@ struct TodayWeatherModel {
     let temperature: Double
     let humidity: Int
     let weatherDescription: String
-    //let oneh: Double
+    let _1h: Double
     let pressure: Int
     let windSpeed: Double
     let windDeg: Double
@@ -35,9 +35,9 @@ struct TodayWeatherModel {
         return String(humidity) + "%"
     }
     
-//    var onehString: String {
-//        return String(oneh) + " mm"
-//    }
+    var _1hString: String {
+        return String(_1h) + " mm"
+    }
     
     var pressureString: String {
         return String(pressure) + " hPa"
@@ -67,6 +67,10 @@ struct TodayWeatherModel {
         }else {
             return "cloud"
         }
+    }
+    
+    func toString() -> String {
+        return "cityName: \(fullCityCountryName),\ntemperature: \(temperatureString),\ndescription: \(capitalizeWeatherDescription),\nhumidity: \(humidityString),\npressure: \(pressureString),\nwind speed: \(windSpeedString),\nwind deg: \(windDegString)"
     }
 }
 

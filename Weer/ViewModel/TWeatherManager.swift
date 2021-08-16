@@ -53,7 +53,7 @@ struct TWeatherManager{
                                             temperature: decodedData.main.temp,
                                             humidity: decodedData.main.humidity,
                                             weatherDescription: decodedData.weather[0].description,
-                                            //oneh: decodedData.rain.Oneh,
+                                            _1h: decodedData.rain?._1h ?? 0.0,
                                             pressure: decodedData.main.pressure,
                                             windSpeed: decodedData.wind.speed,
                                             windDeg: decodedData.wind.deg)
