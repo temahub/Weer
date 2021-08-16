@@ -180,6 +180,9 @@
                                 <state key="normal" title="Share">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapShare:" destination="UBQ-Wx-SOd" eventType="touchUpInside" id="6yc-eu-EjH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="K8p-jL-8zf"/>
@@ -217,6 +220,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZQU-cZ-YYt"/>
+                    <connections>
+                        <outlet property="CityNameLabel" destination="oNj-8w-07y" id="e8c-nK-flr"/>
+                        <outlet property="Today1hLabel" destination="8zQ-MW-dtL" id="nuK-vN-RjF"/>
+                        <outlet property="TodayHumidityLabel" destination="L4X-HT-gm0" id="cyw-g8-YQd"/>
+                        <outlet property="TodayPressureLabel" destination="J9e-Jq-mvg" id="jex-qO-g6d"/>
+                        <outlet property="TodayTemperatureLabel" destination="HHs-yp-RvV" id="cOL-q4-HeL"/>
+                        <outlet property="TodayWeatherDescriptionLabel" destination="joK-jH-NuX" id="Lai-UW-yzZ"/>
+                        <outlet property="TodayWeatherImage" destination="i72-q5-B6R" id="g9Q-ZE-ADZ"/>
+                        <outlet property="TodayWindDegLabel" destination="Zg8-89-dct" id="D4d-QF-dcW"/>
+                        <outlet property="TodayWindSpeedLabel" destination="tyA-KP-Bk3" id="owJ-0N-zIM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zG1-yj-1SS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
