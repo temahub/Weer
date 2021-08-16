@@ -10,18 +10,45 @@ import Foundation
 struct TodayWeatherModel {
     let conditionId: Int
     let cityName: String
+    let countryName: String
     let temperature: Double
     let humidity: Int
     let weatherDescription: String
-    let oneh: Double
+    //let oneh: Double
     let pressure: Int
     let windSpeed: Double
     let windDeg: Double
     
-    
+    var fullCityCountryName: String {
+        return cityName + ", " + countryName
+    }
     
     var temperatureString: String{
-        return String(format: "%.1f", temperature)
+        return String(format: "%.1f", temperature) + "°C"
+    }
+    
+    var capitalizeWeatherDescription: String {
+        return weatherDescription.capitalizingFirstLetter()
+    }
+    
+    var humidityString: String {
+        return String(humidity) + "%"
+    }
+    
+//    var onehString: String {
+//        return String(oneh) + " mm"
+//    }
+    
+    var pressureString: String {
+        return String(pressure) + " hPa"
+    }
+    
+    var windSpeedString: String {
+        return String(windSpeed) + " km/h"
+    }
+    
+    var windDegString: String {
+        return windDeg.direction.toString()
     }
     
     var conditionName: String {
@@ -42,3 +69,39 @@ struct TodayWeatherModel {
         }
     }
 }
+
+
+enum Direction: String, CaseIterable {
+    case n, nne, ne, ene, e, ese, se, sse, s, ssw, sw, wsw, w, wnw, nw, nnw
+}
+
+extension Direction: CustomStringConvertible  {
+    init<D: BinaryFloatingPoint>(_ direction: D) {
+        self =  Self.allCases[Int((direction.angle+11.25).truncatingRemainder(dividingBy: 360)/22.5)]
+    }
+    var description: String { rawValue.uppercased() }
+    
+    func toString() -> String {
+        return description
+    }
+}
+
+extension BinaryFloatingPoint {
+    var angle: Self {
+        (truncatingRemainder(dividingBy: 360) + 360)
+            .truncatingRemainder(dividingBy: 360)
+    }
+    var direction: Direction { .init(self) }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+      return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+      self = self.capitalizingFirstLetter()
+    }
+}
+
+

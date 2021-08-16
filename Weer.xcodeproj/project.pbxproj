@@ -17,6 +17,8 @@
 		A8A0A22F26C9C4AD002685B1 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A22E26C9C4AD002685B1 /* MainTabController.swift */; };
 		A8A0A23226CADD96002685B1 /* TodayWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A23126CADD96002685B1 /* TodayWeatherData.swift */; };
 		A8A0A23426CAE137002685B1 /* TodayWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A23326CAE137002685B1 /* TodayWeatherModel.swift */; };
+		A8A0A23726CAE3C2002685B1 /* TWeatherManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A23626CAE3C2002685B1 /* TWeatherManagerDelegate.swift */; };
+		A8A0A23926CAE407002685B1 /* TWeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A23826CAE407002685B1 /* TWeatherManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		A8A0A22E26C9C4AD002685B1 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		A8A0A23126CADD96002685B1 /* TodayWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherData.swift; sourceTree = "<group>"; };
 		A8A0A23326CAE137002685B1 /* TodayWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherModel.swift; sourceTree = "<group>"; };
+		A8A0A23626CAE3C2002685B1 /* TWeatherManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWeatherManagerDelegate.swift; sourceTree = "<group>"; };
+		A8A0A23826CAE407002685B1 /* TWeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWeatherManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		A8A0A21626C9BA51002685B1 /* Weer */ = {
 			isa = PBXGroup;
 			children = (
+				A8A0A23526CAE365002685B1 /* ViewModel */,
 				A8A0A23026CADD60002685B1 /* Model */,
 				A8A0A22B26C9C1E3002685B1 /* ViewControllers */,
 				A8A0A21726C9BA51002685B1 /* AppDelegate.swift */,
@@ -93,6 +98,15 @@
 				A8A0A23326CAE137002685B1 /* TodayWeatherModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A8A0A23526CAE365002685B1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A8A0A23626CAE3C2002685B1 /* TWeatherManagerDelegate.swift */,
+				A8A0A23826CAE407002685B1 /* TWeatherManager.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +181,8 @@
 			files = (
 				A8A0A21C26C9BA51002685B1 /* TodayViewController.swift in Sources */,
 				A8A0A22F26C9C4AD002685B1 /* MainTabController.swift in Sources */,
+				A8A0A23926CAE407002685B1 /* TWeatherManager.swift in Sources */,
+				A8A0A23726CAE3C2002685B1 /* TWeatherManagerDelegate.swift in Sources */,
 				A8A0A22D26C9C22C002685B1 /* ForecastViewController.swift in Sources */,
 				A8A0A23426CAE137002685B1 /* TodayWeatherModel.swift in Sources */,
 				A8A0A21826C9BA51002685B1 /* AppDelegate.swift in Sources */,
