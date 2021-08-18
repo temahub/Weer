@@ -14,15 +14,15 @@ struct TWeatherManager{
     
     func fetchWeather(cityName: String){
         let urlString = "\(weatherURL)&q=\(cityName)"
-        performRequet(urlString: urlString)
+        performRequest(urlString: urlString)
     }
     
     func fetchWeather(lat: Double, lon: Double) {
         let urlString = "\(weatherURL)&lat=\(lat)&lon=\(lon)"
-        performRequet(urlString: urlString)
+        performRequest(urlString: urlString)
     }
     
-    func performRequet(urlString: String){
+    func performRequest(urlString: String){
         print(urlString)
         if let url = URL(string: urlString){
             

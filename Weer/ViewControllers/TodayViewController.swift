@@ -26,7 +26,6 @@ class TodayViewController: UIViewController {
     
     var weatherAsString: String?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
