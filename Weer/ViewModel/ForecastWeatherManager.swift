@@ -47,7 +47,7 @@ struct ForecastWeatherManager{
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(ForecastWeatherData.self, from: weatherData)
-            let forecast = ForecastWeatherModel.transformListToForecastModel(list: decodedData.list)
+            let forecast = ForecastWeatherModel.transformListToForecastModel(city: decodedData.city, list: decodedData.list)
             
             return forecast
         } catch{

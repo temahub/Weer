@@ -67,6 +67,7 @@ extension ForecastViewController: ForecastWeatherManagerDelegate {
     func didUpdateForecast(forecast: [ForecastModel]) {
         DispatchQueue.main.async {
             self.forecastModelData = forecast
+            self.title = forecast[0].cityName
             self.forecastTableView.reloadData()
         }
     }

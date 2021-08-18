@@ -9,10 +9,11 @@ import Foundation
 
 class ForecastWeatherModel {
     
-    static func transformListToForecastModel(list: [List]) -> [ForecastModel] {
+    static func transformListToForecastModel(city: City, list: [List]) -> [ForecastModel] {
         var forecastModel = [ForecastModel]()
         for eachL in list {
-            forecastModel.append(ForecastModel(day: day(dt: eachL.dt),
+            forecastModel.append(ForecastModel(cityName: city.name,
+                                               day: day(dt: eachL.dt),
                                                time: time(dt: eachL.dt),
                                                temperatureString: temperatureString(temperature: eachL.main.temp),
                                                capitalizeWeatherDescription: capitalizeWeatherDescription(weatherDescription: eachL.weather[0].description),
@@ -65,6 +66,7 @@ class ForecastWeatherModel {
 }
 
 struct ForecastModel {
+    let cityName: String
     let day: String
     let time: String
     let temperatureString: String

@@ -75,8 +75,8 @@
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joK-jH-NuX">
-                                <rect key="frame" x="231.5" y="354" width="126" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="joK-jH-NuX">
+                                <rect key="frame" x="231.5" y="354" width="172.5" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
@@ -98,7 +98,7 @@
                                             <constraint firstAttribute="width" constant="40" id="Yy3-QJ-Oz9"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0 mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zQ-MW-dtL">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0 mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8zQ-MW-dtL">
                                         <rect key="frame" x="0.0" y="50" width="54" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -215,9 +215,9 @@
                             <constraint firstItem="i72-q5-B6R" firstAttribute="centerX" secondItem="oNj-8w-07y" secondAttribute="centerX" id="Ili-iY-ffz"/>
                             <constraint firstItem="eIj-AO-Nnq" firstAttribute="top" secondItem="oNj-8w-07y" secondAttribute="bottom" constant="29" id="Ioi-cZ-2pt"/>
                             <constraint firstItem="K8p-jL-8zf" firstAttribute="trailing" secondItem="xig-d4-ohG" secondAttribute="trailing" constant="90.5" id="Ob5-Wl-EGh"/>
-                            <constraint firstItem="joK-jH-NuX" firstAttribute="leading" secondItem="eIj-AO-Nnq" secondAttribute="trailing" constant="20" id="R86-KI-T2B"/>
+                            <constraint firstItem="joK-jH-NuX" firstAttribute="leading" secondItem="eIj-AO-Nnq" secondAttribute="trailing" constant="20" id="R86-KI-T2B" userLabel="Today Weather Description Label.leading = |.trailing + 5"/>
                             <constraint firstItem="i72-q5-B6R" firstAttribute="top" secondItem="K8p-jL-8zf" secondAttribute="top" constant="60" id="UQP-Yf-Y4T"/>
-                            <constraint firstItem="eIj-AO-Nnq" firstAttribute="leading" secondItem="HHs-yp-RvV" secondAttribute="trailing" constant="27" id="V6N-vt-Vb6" userLabel="|.leading = 22°C.trailing + 20"/>
+                            <constraint firstItem="eIj-AO-Nnq" firstAttribute="leading" secondItem="HHs-yp-RvV" secondAttribute="trailing" constant="27" id="V6N-vt-Vb6" userLabel="|.leading = 22°C.trailing + 5"/>
                             <constraint firstItem="MvJ-ZL-TFS" firstAttribute="centerX" secondItem="HHs-yp-RvV" secondAttribute="centerX" id="VtM-Er-FTk"/>
                             <constraint firstItem="i72-q5-B6R" firstAttribute="centerX" secondItem="XTz-63-IZO" secondAttribute="centerX" id="WVJ-Rj-g52"/>
                             <constraint firstAttribute="trailing" secondItem="q76-K6-UIf" secondAttribute="trailing" constant="299" id="ZFh-Ta-th2"/>
@@ -225,6 +225,7 @@
                             <constraint firstItem="q76-K6-UIf" firstAttribute="bottom" secondItem="paD-7A-S5e" secondAttribute="bottom" id="ZsD-yO-7dP"/>
                             <constraint firstItem="xig-d4-ohG" firstAttribute="top" secondItem="paD-7A-S5e" secondAttribute="bottom" constant="42" id="c7x-RD-Wvb"/>
                             <constraint firstItem="xig-d4-ohG" firstAttribute="top" secondItem="qvR-pJ-gTh" secondAttribute="bottom" constant="150" id="eWJ-BQ-FAD"/>
+                            <constraint firstItem="K8p-jL-8zf" firstAttribute="trailing" secondItem="joK-jH-NuX" secondAttribute="trailing" constant="10" id="gW2-Qy-qyW" userLabel="Safe Area.trailing = Today Weather Description Label.trailing + 15"/>
                             <constraint firstItem="eIj-AO-Nnq" firstAttribute="centerX" secondItem="XTz-63-IZO" secondAttribute="centerX" id="mvc-8E-pz2"/>
                             <constraint firstItem="qvR-pJ-gTh" firstAttribute="top" secondItem="eIj-AO-Nnq" secondAttribute="bottom" constant="47.5" id="p6J-6c-Xkb"/>
                             <constraint firstItem="qvR-pJ-gTh" firstAttribute="centerY" secondItem="XTz-63-IZO" secondAttribute="centerY" id="qI2-6p-vCI"/>
