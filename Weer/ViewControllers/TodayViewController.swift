@@ -28,7 +28,6 @@ class TodayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "Today"
         
         locationManager.delegate = self
@@ -36,6 +35,13 @@ class TodayViewController: UIViewController {
         locationManager.requestLocation()
         
         weatherManager.delegate = self
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .done, target: self, action: #selector(didTapSave))
+    }
+    
+    @objc func didTapSave() {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
     }
 
     @IBAction func didTapShare(_ sender: UIButton) {
@@ -79,4 +85,8 @@ extension TodayViewController: CLLocationManagerDelegate{
         print(error)
     }
 }
+
+
+
+
 

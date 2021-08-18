@@ -7,6 +7,20 @@
 
 import Foundation
 
+struct ForecastModel {
+    let cityName: String
+    let day: String
+    let time: String
+    let temperatureString: String
+    let capitalizeWeatherDescription: String
+    let conditionName: String
+}
+
+struct ForecastSortedModel {
+    let day: String
+    let forecastModel: [ForecastModel]
+}
+
 class ForecastWeatherModel {
     
     static func transformListToForecastModel(city: City, list: [List]) -> [ForecastModel] {
@@ -94,18 +108,9 @@ class ForecastWeatherModel {
     }
 }
 
-struct ForecastModel {
-    let cityName: String
-    let day: String
-    let time: String
-    let temperatureString: String
-    let capitalizeWeatherDescription: String
-    let conditionName: String
+extension Sequence where Iterator.Element: Hashable {
+    func unique() -> [Iterator.Element] {
+        var seen: [Iterator.Element: Bool] = [:]
+        return self.filter { seen.updateValue(true, forKey: $0) == nil }
+    }
 }
-
-struct ForecastSortedModel {
-    let day: String
-    let forecastModel: [ForecastModel]
-}
-
-

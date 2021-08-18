@@ -30,6 +30,13 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
         forecastTableView.register(nib, forCellReuseIdentifier: "ForecastTableViewCell")
         forecastTableView.delegate = self
         forecastTableView.dataSource = self
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .done, target: self, action: #selector(didTapSave))
+    }
+    
+    @objc func didTapSave() {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -100,11 +107,6 @@ extension ForecastViewController: CLLocationManagerDelegate{
     }
 }
 
-extension Sequence where Iterator.Element: Hashable {
-    func unique() -> [Iterator.Element] {
-        var seen: [Iterator.Element: Bool] = [:]
-        return self.filter { seen.updateValue(true, forKey: $0) == nil }
-    }
-}
+
 
 
