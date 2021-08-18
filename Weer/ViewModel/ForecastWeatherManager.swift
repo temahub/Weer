@@ -43,13 +43,14 @@ struct ForecastWeatherManager{
         }
     }
     
-    func parseJson(weatherData: Data) -> [ForecastModel]? {
+    func parseJson(weatherData: Data) -> [ForecastSortedModel]? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(ForecastWeatherData.self, from: weatherData)
             let forecast = ForecastWeatherModel.transformListToForecastModel(city: decodedData.city, list: decodedData.list)
+            let sortedForecast = ForecastWeatherModel.transformForecastModelToForecastSortedModel(fModel: forecast)
             
-            return forecast
+            return sortedForecast
         } catch{
             print(error)
             return nil

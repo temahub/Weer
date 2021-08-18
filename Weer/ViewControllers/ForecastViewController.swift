@@ -16,6 +16,7 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
     var forecastManager = ForecastWeatherManager()
     
     var forecastModelData = [ForecastModel?]()
+    var forecastSortedModel = [ForecastSortedModel?]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,30 +32,38 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
         forecastTableView.dataSource = self
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        forecastSortedModel.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return forecastModelData.count
+        return forecastSortedModel[section]?.forecastModel.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return forecastSortedModel[section]?.day
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = forecastTableView.dequeueReusableCell(withIdentifier: "ForecastTableViewCell",
                                                          for: indexPath) as! ForecastTableViewCell
         
-        guard let temp = forecastModelData[indexPath.row]?.temperatureString else {
+        guard let temp = forecastSortedModel[indexPath.section]?.forecastModel[indexPath.row].temperatureString else {
             return cell
         }
         cell.temperatureLabel.text = temp
         
-        guard let time = forecastModelData[indexPath.row]?.time else {
+        guard let time = forecastSortedModel[indexPath.section]?.forecastModel[indexPath.row].time else {
             return cell
         }
         cell.timeLabel.text = time
         
-        guard let weatherDescription = forecastModelData[indexPath.row]?.capitalizeWeatherDescription else {
+        guard let weatherDescription = forecastSortedModel[indexPath.section]?.forecastModel[indexPath.row].capitalizeWeatherDescription else {
             return cell
         }
         cell.weatherDescriptionLabel.text = weatherDescription
         
-        guard  let conditionName = forecastModelData[indexPath.row]?.conditionName else {
+        guard let conditionName = forecastSortedModel[indexPath.section]?.forecastModel[indexPath.row].conditionName else {
             return cell
         }
         cell.weatherImage.image = UIImage(systemName: conditionName)
@@ -64,10 +73,11 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 extension ForecastViewController: ForecastWeatherManagerDelegate {
-    func didUpdateForecast(forecast: [ForecastModel]) {
+    func didUpdateForecast(forecast: [ForecastSortedModel]) {
         DispatchQueue.main.async {
-            self.forecastModelData = forecast
-            self.title = forecast[0].cityName
+            self.forecastSortedModel = forecast
+            self.title = forecast[0].forecastModel[0].cityName
+                        
             self.forecastTableView.reloadData()
         }
     }
@@ -89,3 +99,12 @@ extension ForecastViewController: CLLocationManagerDelegate{
         print(error)
     }
 }
+
+extension Sequence where Iterator.Element: Hashable {
+    func unique() -> [Iterator.Element] {
+        var seen: [Iterator.Element: Bool] = [:]
+        return self.filter { seen.updateValue(true, forKey: $0) == nil }
+    }
+}
+
+

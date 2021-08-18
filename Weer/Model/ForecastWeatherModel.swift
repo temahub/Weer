@@ -22,6 +22,35 @@ class ForecastWeatherModel {
         return forecastModel
     }
     
+    static func transformForecastModelToForecastSortedModel(fModel: [ForecastModel]) -> [ForecastSortedModel] {
+        
+        var forecastSortedModel = [ForecastSortedModel]()
+        
+        var forecastDaySections = [String?]()
+        for fwd in fModel {
+            forecastDaySections.append(fwd.day)
+        }
+        forecastDaySections = forecastDaySections.unique()
+        
+        for eachDay in forecastDaySections {
+            forecastSortedModel.append(ForecastSortedModel(day: eachDay!,
+                                                           forecastModel: collectForecastModels(day: eachDay!)))
+        }        
+        
+        func collectForecastModels(day: String) -> [ForecastModel] {
+            var fCollectModel = [ForecastModel]()
+            for eachFM in fModel {
+                if eachFM.day == day {
+                    fCollectModel.append(eachFM)
+                }
+            }
+            
+            return fCollectModel
+        }
+        
+        return forecastSortedModel
+    }
+    
     static func day(dt: Int) -> String {
         let date = Date(timeIntervalSince1970: TimeInterval(dt))
         let dayOfWeek = DateFormatter().weekdaySymbols[Calendar.current.component(.weekday, from: date) - 1]
@@ -72,6 +101,11 @@ struct ForecastModel {
     let temperatureString: String
     let capitalizeWeatherDescription: String
     let conditionName: String
+}
+
+struct ForecastSortedModel {
+    let day: String
+    let forecastModel: [ForecastModel]
 }
 
 

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ForecastWeatherManagerDelegate {
-    func didUpdateForecast(forecast: [ForecastModel])
+    func didUpdateForecast(forecast: [ForecastSortedModel])
 }
