@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28C0ED46B7930C6B4E153077 /* libPods-Weer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8541A1A2C5B26F9D4A273137 /* libPods-Weer.a */; };
 		A8A0A21826C9BA51002685B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A21726C9BA51002685B1 /* AppDelegate.swift */; };
 		A8A0A21A26C9BA51002685B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A21926C9BA51002685B1 /* SceneDelegate.swift */; };
 		A8A0A21C26C9BA51002685B1 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A21B26C9BA51002685B1 /* TodayViewController.swift */; };
@@ -28,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37512BF80EEE628B32FC44B5 /* Pods-Weer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weer.debug.xcconfig"; path = "Target Support Files/Pods-Weer/Pods-Weer.debug.xcconfig"; sourceTree = "<group>"; };
+		8541A1A2C5B26F9D4A273137 /* libPods-Weer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A48334CAFB7702434E442586 /* Pods-Weer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weer.release.xcconfig"; path = "Target Support Files/Pods-Weer/Pods-Weer.release.xcconfig"; sourceTree = "<group>"; };
 		A8A0A21426C9BA51002685B1 /* Weer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A0A21726C9BA51002685B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8A0A21926C9BA51002685B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,17 +59,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C0ED46B7930C6B4E153077 /* libPods-Weer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4AC8F18B63FC05CFD6A12EB3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37512BF80EEE628B32FC44B5 /* Pods-Weer.debug.xcconfig */,
+				A48334CAFB7702434E442586 /* Pods-Weer.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A8A0A20B26C9BA51002685B1 = {
 			isa = PBXGroup;
 			children = (
 				A8A0A21626C9BA51002685B1 /* Weer */,
 				A8A0A21526C9BA51002685B1 /* Products */,
+				4AC8F18B63FC05CFD6A12EB3 /* Pods */,
+				DECB0291B08958C0EFFECFCA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +152,14 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		DECB0291B08958C0EFFECFCA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8541A1A2C5B26F9D4A273137 /* libPods-Weer.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,6 +167,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A8A0A22826C9BA52002685B1 /* Build configuration list for PBXNativeTarget "Weer" */;
 			buildPhases = (
+				AD35B50AA38F2FDC85BAE522 /* [CP] Check Pods Manifest.lock */,
 				A8A0A21026C9BA51002685B1 /* Sources */,
 				A8A0A21126C9BA51002685B1 /* Frameworks */,
 				A8A0A21226C9BA51002685B1 /* Resources */,
@@ -200,6 +226,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AD35B50AA38F2FDC85BAE522 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Weer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A8A0A21026C9BA51002685B1 /* Sources */ = {
@@ -363,6 +414,7 @@
 		};
 		A8A0A22926C9BA52002685B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37512BF80EEE628B32FC44B5 /* Pods-Weer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -383,6 +435,7 @@
 		};
 		A8A0A22A26C9BA52002685B1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A48334CAFB7702434E442586 /* Pods-Weer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
