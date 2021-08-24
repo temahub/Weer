@@ -33,8 +33,7 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var separatorBeforShareButton: UILabel!
     @IBOutlet weak var todayShareButton: UIButton!
     
-    let locationManager = CLLocationManager()
-    var weatherManager = TWeatherManager()
+    private var todayViewModel: TodayViewModel!
     
     var weatherAsString: String?
     
@@ -42,19 +41,13 @@ class TodayViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Today"
         setupView()
-        
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
-        
-        weatherManager.delegate = self
+        callTodayViewModelForUIUpdate()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .done, target: self, action: #selector(didTapSave))
-    }
+      }
     
     @objc func didTapSave() {
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
+        callTodayViewModelForUIUpdate()
     }
 
     @IBAction func didTapShare(_ sender: UIButton) {
@@ -64,38 +57,23 @@ class TodayViewController: UIViewController {
           self.present(activityVC, animated: true, completion: nil)
         }
     }
-}
-
-extension TodayViewController: TWeatherManagerDelegate{
-    func didUpdateWeather(weather: TodayWeatherModel) {
-        DispatchQueue.main.async {
-            self.todayTemperatureLabel.text = weather.temperatureString
-            self.cityNameLabel.text = weather.fullCityCountryName
-            self.todayWeatherImage.image = UIImage(systemName: weather.conditionName)
-            self.todayWeatherDescriptionLabel.text = weather.capitalizeWeatherDescription
-            self.todayHumidityLabel.text = weather.humidityString
-            self.today1hLabel.text = weather._1hString
-            self.todayPressureLabel.text = weather.pressureString
-            self.todayWindSpeedLabel.text = weather.windSpeedString
-            self.todayWindDegLabel.text = weather.windDegString
-            self.weatherAsString = weather.toString()
-        }
-    }
-}
-
-extension TodayViewController: CLLocationManagerDelegate{
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            if let location = locations.first {
-                locationManager.stopUpdatingLocation()
-                let lat = location.coordinate.latitude
-                let lon = location.coordinate.longitude
-                
-                weatherManager.fetchWeather(lat: lat, lon: lon)
+    
+    func callTodayViewModelForUIUpdate() {
+        self.todayViewModel = TodayViewModel()
+        self.todayViewModel.bindTodayWeatherModelToController = {
+            DispatchQueue.main.async {
+                self.todayTemperatureLabel.text = self.todayViewModel.todayWeatherModel.temperatureString
+                self.cityNameLabel.text = self.todayViewModel.todayWeatherModel.fullCityCountryName
+                self.todayWeatherImage.image = UIImage(systemName: self.todayViewModel.todayWeatherModel.conditionName)
+                self.todayWeatherDescriptionLabel.text = self.todayViewModel.todayWeatherModel.capitalizeWeatherDescription
+                self.todayHumidityLabel.text = self.todayViewModel.todayWeatherModel.humidityString
+                self.today1hLabel.text = self.todayViewModel.todayWeatherModel._1hString
+                self.todayPressureLabel.text = self.todayViewModel.todayWeatherModel.pressureString
+                self.todayWindSpeedLabel.text = self.todayViewModel.todayWeatherModel.windSpeedString
+                self.todayWindDegLabel.text = self.todayViewModel.todayWeatherModel.windDegString
+                self.weatherAsString = self.todayViewModel.todayWeatherModel.toString()
             }
         }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
     }
 }
 
@@ -138,8 +116,6 @@ extension TodayViewController{
         self.view.addSubview(separatorBeforWeatherIns)
         separatorBeforWeatherIns.snp.makeConstraints { (make) -> Void in
             make.centerX.equalTo(self.view)
-            //make.top.equalTo(separatorTempAndDescr).offset(40)
-            //make.top.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.topMargin).inset(350)
             make.bottom.equalTo(todayShareButton).inset(250)
         }
         
