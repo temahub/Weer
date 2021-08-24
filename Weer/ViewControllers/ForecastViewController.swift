@@ -33,12 +33,15 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func callForecastViewModelForUIUpdate() {
+        let loader = self.loader()
         self.forecastViewModel = ForecastViewModel()
         self.forecastViewModel.bindForecastSortedModelToController = {
             DispatchQueue.main.async {
                 self.forecastSortedModel = self.forecastViewModel.forecastSortedModel
                 self.title = self.forecastSortedModel[0]?.forecastModel[0].cityName
                 self.forecastTableView.reloadData()
+                
+                self.stopLoader(loader: loader)
             }
         }
     }

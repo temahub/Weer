@@ -10,6 +10,7 @@
 		28C0ED46B7930C6B4E153077 /* libPods-Weer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8541A1A2C5B26F9D4A273137 /* libPods-Weer.a */; };
 		A842B8B326D56F7100CEB165 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842B8B226D56F7100CEB165 /* TodayViewModel.swift */; };
 		A842B8B526D57D8100CEB165 /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842B8B426D57D8100CEB165 /* ForecastViewModel.swift */; };
+		A842B8B826D58B8B00CEB165 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842B8B726D58B8B00CEB165 /* UIViewControllerExtensions.swift */; };
 		A8A0A21826C9BA51002685B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A21726C9BA51002685B1 /* AppDelegate.swift */; };
 		A8A0A21A26C9BA51002685B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A21926C9BA51002685B1 /* SceneDelegate.swift */; };
 		A8A0A21C26C9BA51002685B1 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A21B26C9BA51002685B1 /* TodayViewController.swift */; };
@@ -36,6 +37,7 @@
 		A48334CAFB7702434E442586 /* Pods-Weer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weer.release.xcconfig"; path = "Target Support Files/Pods-Weer/Pods-Weer.release.xcconfig"; sourceTree = "<group>"; };
 		A842B8B226D56F7100CEB165 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		A842B8B426D57D8100CEB165 /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
+		A842B8B726D58B8B00CEB165 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		A8A0A21426C9BA51002685B1 /* Weer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A0A21726C9BA51002685B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8A0A21926C9BA51002685B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A842B8B626D58B0C00CEB165 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A842B8B726D58B8B00CEB165 /* UIViewControllerExtensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		A8A0A20B26C9BA51002685B1 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +114,7 @@
 				A8A0A23526CAE365002685B1 /* ViewModel */,
 				A8A0A23026CADD60002685B1 /* Model */,
 				A8A0A22B26C9C1E3002685B1 /* ViewControllers */,
+				A842B8B626D58B0C00CEB165 /* Utils */,
 				A8A0A21726C9BA51002685B1 /* AppDelegate.swift */,
 				A8A0A21926C9BA51002685B1 /* SceneDelegate.swift */,
 				A8A0A21D26C9BA51002685B1 /* Main.storyboard */,
@@ -263,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8A0A21C26C9BA51002685B1 /* TodayViewController.swift in Sources */,
+				A842B8B826D58B8B00CEB165 /* UIViewControllerExtensions.swift in Sources */,
 				A8A0A22F26C9C4AD002685B1 /* MainTabController.swift in Sources */,
 				A842B8B326D56F7100CEB165 /* TodayViewModel.swift in Sources */,
 				A8A0A23926CAE407002685B1 /* TWeatherManager.swift in Sources */,

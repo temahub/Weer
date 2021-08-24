@@ -59,6 +59,7 @@ class TodayViewController: UIViewController {
     }
     
     func callTodayViewModelForUIUpdate() {
+        let loader = self.loader()
         self.todayViewModel = TodayViewModel()
         self.todayViewModel.bindTodayWeatherModelToController = {
             DispatchQueue.main.async {
@@ -72,6 +73,8 @@ class TodayViewController: UIViewController {
                 self.todayWindSpeedLabel.text = self.todayViewModel.todayWeatherModel.windSpeedString
                 self.todayWindDegLabel.text = self.todayViewModel.todayWeatherModel.windDegString
                 self.weatherAsString = self.todayViewModel.todayWeatherModel.toString()
+                
+                self.stopLoader(loader: loader)
             }
         }
     }
