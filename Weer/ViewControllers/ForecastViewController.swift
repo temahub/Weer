@@ -12,31 +12,35 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet var forecastTableView: UITableView!
     
-    let locationManager = CLLocationManager()
-    var forecastManager = ForecastWeatherManager()
-    
-    var forecastModelData = [ForecastModel?]()
+    private var forecastViewModel: ForecastViewModel!
     var forecastSortedModel = [ForecastSortedModel?]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
         
-        forecastManager.delegate = self
         let nib = UINib(nibName: "ForecastTableViewCell", bundle: nil)
         forecastTableView.register(nib, forCellReuseIdentifier: "ForecastTableViewCell")
         forecastTableView.delegate = self
         forecastTableView.dataSource = self
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .done, target: self, action: #selector(didTapSave))
+        
+        callForecastViewModelForUIUpdate()
     }
     
     @objc func didTapSave() {
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
+        callForecastViewModelForUIUpdate()
+    }
+    
+    func callForecastViewModelForUIUpdate() {
+        self.forecastViewModel = ForecastViewModel()
+        self.forecastViewModel.bindForecastSortedModelToController = {
+            DispatchQueue.main.async {
+                self.forecastSortedModel = self.forecastViewModel.forecastSortedModel
+                self.title = self.forecastSortedModel[0]?.forecastModel[0].cityName
+                self.forecastTableView.reloadData()
+            }
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,35 +82,4 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
 }
-
-extension ForecastViewController: ForecastWeatherManagerDelegate {
-    func didUpdateForecast(forecast: [ForecastSortedModel]) {
-        DispatchQueue.main.async {
-            self.forecastSortedModel = forecast
-            self.title = forecast[0].forecastModel[0].cityName
-                        
-            self.forecastTableView.reloadData()
-        }
-    }
-}
-
-
-extension ForecastViewController: CLLocationManagerDelegate{
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            if let location = locations.first {
-                locationManager.stopUpdatingLocation()
-                let lat = location.coordinate.latitude
-                let lon = location.coordinate.longitude
-                
-                forecastManager.fetchWeather(lat: lat, lon: lon)
-            }
-        }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
-}
-
-
-
 
