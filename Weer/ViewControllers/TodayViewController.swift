@@ -11,31 +11,31 @@ import SnapKit
 
 class TodayViewController: UIViewController {
 
-    @IBOutlet weak var todayWeatherImage: UIImageView!
+    @IBOutlet private weak var todayWeatherImage: UIImageView!
     
-    @IBOutlet weak var cityNameLabel: UILabel!
-    @IBOutlet weak var separatorTempAndDescr: UILabel!
-    @IBOutlet weak var todayTemperatureLabel: UILabel!
-    @IBOutlet weak var todayWeatherDescriptionLabel: UILabel!
-    @IBOutlet weak var separatorBeforWeatherIns: UILabel!
-    @IBOutlet weak var today1hImage: UIImageView!
-    @IBOutlet weak var todayHumidityImage: UIImageView!
-    @IBOutlet weak var todayPressureImage: UIImageView!
-    @IBOutlet weak var todayHumidityLabel: UILabel!
-    @IBOutlet weak var today1hLabel: UILabel!
-    @IBOutlet weak var todayPressureLabel: UILabel!
+    @IBOutlet private weak var cityNameLabel: UILabel!
+    @IBOutlet private weak var separatorTempAndDescr: UILabel!
+    @IBOutlet private weak var todayTemperatureLabel: UILabel!
+    @IBOutlet private weak var todayWeatherDescriptionLabel: UILabel!
+    @IBOutlet private weak var separatorBeforWeatherIns: UILabel!
+    @IBOutlet private weak var today1hImage: UIImageView!
+    @IBOutlet private weak var todayHumidityImage: UIImageView!
+    @IBOutlet private weak var todayPressureImage: UIImageView!
+    @IBOutlet private weak var todayHumidityLabel: UILabel!
+    @IBOutlet private weak var today1hLabel: UILabel!
+    @IBOutlet private weak var todayPressureLabel: UILabel!
     
-    @IBOutlet weak var todayWindSpeedImage: UIImageView!
-    @IBOutlet weak var todayWindDegImage: UIImageView!
+    @IBOutlet private weak var todayWindSpeedImage: UIImageView!
+    @IBOutlet private weak var todayWindDegImage: UIImageView!
     
-    @IBOutlet weak var todayWindSpeedLabel: UILabel!
-    @IBOutlet weak var todayWindDegLabel: UILabel!
-    @IBOutlet weak var separatorBeforShareButton: UILabel!
-    @IBOutlet weak var todayShareButton: UIButton!
+    @IBOutlet private weak var todayWindSpeedLabel: UILabel!
+    @IBOutlet private weak var todayWindDegLabel: UILabel!
+    @IBOutlet private weak var separatorBeforShareButton: UILabel!
+    @IBOutlet private weak var todayShareButton: UIButton!
     
     private var todayViewModel: TodayViewModel!
     
-    var weatherAsString: String?
+    private var weatherAsString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +46,11 @@ class TodayViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .done, target: self, action: #selector(didTapSave))
       }
     
-    @objc func didTapSave() {
+    @objc private func didTapSave() {
         callTodayViewModelForUIUpdate()
     }
 
-    @IBAction func didTapShare(_ sender: UIButton) {
+    @IBAction private func didTapShare(_ sender: UIButton) {
         if let object = weatherAsString, weatherAsString != nil {
           let objectsToShare = [object]
           let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
@@ -58,7 +58,7 @@ class TodayViewController: UIViewController {
         }
     }
     
-    func callTodayViewModelForUIUpdate() {
+    private func callTodayViewModelForUIUpdate() {
         if !Reachability.isConnectedToNetwork() {
             self.alert(title: "Internet unreachable", message: "Please ensure you have internet connection")
             return
@@ -82,14 +82,10 @@ class TodayViewController: UIViewController {
             }
         }
     }
-    
-    func isInternetConnected() -> Bool {
-        Reachability.isConnectedToNetwork()
-    }
 }
 
 extension TodayViewController{
-    func setupView() -> Void {
+    private func setupView() -> Void {
         self.view.addSubview(todayWeatherImage)
         todayWeatherImage.translatesAutoresizingMaskIntoConstraints = false
         todayWeatherImage.snp.makeConstraints { (make) -> Void in

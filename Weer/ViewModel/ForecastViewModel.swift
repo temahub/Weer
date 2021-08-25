@@ -10,8 +10,8 @@ import CoreLocation
 
 class ForecastViewModel: NSObject, ForecastWeatherManagerDelegate, CLLocationManagerDelegate {
     
-    let locationManager = CLLocationManager()
-    var forecastManager = ForecastWeatherManager()
+    private let locationManager = CLLocationManager()
+    private var forecastManager = ForecastWeatherManager()
     
     private(set) var forecastSortedModel: [ForecastSortedModel]! {
         didSet{

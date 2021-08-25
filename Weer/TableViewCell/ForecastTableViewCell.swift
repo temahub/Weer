@@ -13,7 +13,6 @@ class ForecastTableViewCell: UITableViewCell {
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var weatherDescriptionLabel: UILabel!
     @IBOutlet var temperatureLabel: UILabel!
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()

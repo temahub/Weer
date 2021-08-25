@@ -10,10 +10,10 @@ import CoreLocation
 
 class ForecastViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet var forecastTableView: UITableView!
+    @IBOutlet private var forecastTableView: UITableView!
     
     private var forecastViewModel: ForecastViewModel!
-    var forecastSortedModel = [ForecastSortedModel?]()
+    private var forecastSortedModel = [ForecastSortedModel?]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +28,11 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
         callForecastViewModelForUIUpdate()
     }
     
-    @objc func didTapSave() {
+    @objc private func didTapSave() {
         callForecastViewModelForUIUpdate()
     }
     
-    func callForecastViewModelForUIUpdate() {
+    private func callForecastViewModelForUIUpdate() {
         if !Reachability.isConnectedToNetwork() {
             self.alert(title: "Internet unreachable", message: "Please ensure you have internet connection")
             return

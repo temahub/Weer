@@ -10,8 +10,8 @@ import CoreLocation
 
 class TodayViewModel: NSObject, TWeatherManagerDelegate, CLLocationManagerDelegate {
     
-    let locationManager = CLLocationManager()
-    var weatherManager = TWeatherManager()
+    private let locationManager = CLLocationManager()
+    private var weatherManager = TWeatherManager()
     
     private(set) var todayWeatherModel: TodayWeatherModel! {
         didSet{

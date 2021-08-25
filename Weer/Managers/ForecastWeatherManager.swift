@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct ForecastWeatherManager{
-    let weatherURL = "https://api.openweathermap.org/data/2.5/forecast?&units=metric&appid=8c148010a5b996c78005a9dd3bac88a0"
+    private let weatherURL = "https://api.openweathermap.org/data/2.5/forecast?&units=metric&appid=8c148010a5b996c78005a9dd3bac88a0"
     
     var delegate: ForecastWeatherManagerDelegate?
     
@@ -23,14 +23,13 @@ struct ForecastWeatherManager{
         performRequest(urlString: urlString)
     }
     
-    func performRequest(urlString: String){
+    private func performRequest(urlString: String){
         if let url = URL(string: urlString){
             
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil{
                     print(error!)
-                    let aler = UIViewController().alert(title: "Internet", message: "Internet")
                     return
                 }
                 if let safeData = data{
@@ -44,7 +43,7 @@ struct ForecastWeatherManager{
         }
     }
     
-    func parseJson(weatherData: Data) -> [ForecastSortedModel]? {
+    private func parseJson(weatherData: Data) -> [ForecastSortedModel]? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(ForecastWeatherData.self, from: weatherData)

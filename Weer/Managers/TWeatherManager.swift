@@ -8,7 +8,7 @@
 import Foundation
 
 struct TWeatherManager{
-    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?&units=metric&appid=8c148010a5b996c78005a9dd3bac88a0"
+    private let weatherURL = "https://api.openweathermap.org/data/2.5/weather?&units=metric&appid=8c148010a5b996c78005a9dd3bac88a0"
     
     var delegate: TWeatherManagerDelegate?
     
@@ -22,7 +22,7 @@ struct TWeatherManager{
         performRequest(urlString: urlString)
     }
     
-    func performRequest(urlString: String){
+    private func performRequest(urlString: String){
         if let url = URL(string: urlString){
             
             let session = URLSession(configuration: .default)
@@ -42,7 +42,7 @@ struct TWeatherManager{
         }
     }
     
-    func parseJson(weatherData: Data) -> TodayWeatherModel? {
+    private func parseJson(weatherData: Data) -> TodayWeatherModel? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
