@@ -11,6 +11,7 @@
 		A842B8B326D56F7100CEB165 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842B8B226D56F7100CEB165 /* TodayViewModel.swift */; };
 		A842B8B526D57D8100CEB165 /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842B8B426D57D8100CEB165 /* ForecastViewModel.swift */; };
 		A842B8B826D58B8B00CEB165 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842B8B726D58B8B00CEB165 /* UIViewControllerExtensions.swift */; };
+		A842B8BC26D5B42000CEB165 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842B8BB26D5B42000CEB165 /* Reachability.swift */; };
 		A8A0A21826C9BA51002685B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A21726C9BA51002685B1 /* AppDelegate.swift */; };
 		A8A0A21A26C9BA51002685B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A21926C9BA51002685B1 /* SceneDelegate.swift */; };
 		A8A0A21C26C9BA51002685B1 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A0A21B26C9BA51002685B1 /* TodayViewController.swift */; };
@@ -38,6 +39,7 @@
 		A842B8B226D56F7100CEB165 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		A842B8B426D57D8100CEB165 /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
 		A842B8B726D58B8B00CEB165 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		A842B8BB26D5B42000CEB165 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A8A0A21426C9BA51002685B1 /* Weer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A0A21726C9BA51002685B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8A0A21926C9BA51002685B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,8 +87,20 @@
 			isa = PBXGroup;
 			children = (
 				A842B8B726D58B8B00CEB165 /* UIViewControllerExtensions.swift */,
+				A842B8BB26D5B42000CEB165 /* Reachability.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A842B8BD26D5C25B00CEB165 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A8A0A23626CAE3C2002685B1 /* TWeatherManagerDelegate.swift */,
+				A8A0A23826CAE407002685B1 /* TWeatherManager.swift */,
+				A8A0A23E26CC36E5002685B1 /* ForecastWeatherManagerDelegate.swift */,
+				A8A0A24026CC378C002685B1 /* ForecastWeatherManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		A8A0A20B26C9BA51002685B1 = {
@@ -110,6 +124,7 @@
 		A8A0A21626C9BA51002685B1 /* Weer */ = {
 			isa = PBXGroup;
 			children = (
+				A842B8BD26D5C25B00CEB165 /* Managers */,
 				A8A0A24226CD3513002685B1 /* TableViewCell */,
 				A8A0A23526CAE365002685B1 /* ViewModel */,
 				A8A0A23026CADD60002685B1 /* Model */,
@@ -149,10 +164,6 @@
 		A8A0A23526CAE365002685B1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A8A0A23626CAE3C2002685B1 /* TWeatherManagerDelegate.swift */,
-				A8A0A23826CAE407002685B1 /* TWeatherManager.swift */,
-				A8A0A23E26CC36E5002685B1 /* ForecastWeatherManagerDelegate.swift */,
-				A8A0A24026CC378C002685B1 /* ForecastWeatherManager.swift */,
 				A842B8B226D56F7100CEB165 /* TodayViewModel.swift */,
 				A842B8B426D57D8100CEB165 /* ForecastViewModel.swift */,
 			);
@@ -287,6 +298,7 @@
 				A8A0A23426CAE137002685B1 /* TodayWeatherModel.swift in Sources */,
 				A8A0A24126CC378C002685B1 /* ForecastWeatherManager.swift in Sources */,
 				A8A0A23F26CC36E5002685B1 /* ForecastWeatherManagerDelegate.swift in Sources */,
+				A842B8BC26D5B42000CEB165 /* Reachability.swift in Sources */,
 				A8A0A21826C9BA51002685B1 /* AppDelegate.swift in Sources */,
 				A8A0A23226CADD96002685B1 /* TodayWeatherData.swift in Sources */,
 				A8A0A21A26C9BA51002685B1 /* SceneDelegate.swift in Sources */,

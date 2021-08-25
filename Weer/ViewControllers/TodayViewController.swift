@@ -59,6 +59,10 @@ class TodayViewController: UIViewController {
     }
     
     func callTodayViewModelForUIUpdate() {
+        if !Reachability.isConnectedToNetwork() {
+            self.alert(title: "Internet unreachable", message: "Please ensure you have internet connection")
+            return
+        }
         let loader = self.loader()
         self.todayViewModel = TodayViewModel()
         self.todayViewModel.bindTodayWeatherModelToController = {
@@ -77,6 +81,10 @@ class TodayViewController: UIViewController {
                 self.stopLoader(loader: loader)
             }
         }
+    }
+    
+    func isInternetConnected() -> Bool {
+        Reachability.isConnectedToNetwork()
     }
 }
 

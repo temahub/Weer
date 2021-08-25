@@ -33,6 +33,10 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func callForecastViewModelForUIUpdate() {
+        if !Reachability.isConnectedToNetwork() {
+            self.alert(title: "Internet unreachable", message: "Please ensure you have internet connection")
+            return
+        }
         let loader = self.loader()
         self.forecastViewModel = ForecastViewModel()
         self.forecastViewModel.bindForecastSortedModelToController = {
